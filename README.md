@@ -1,0 +1,1 @@
+# Geology-Analyst-Seismic-non-Sesimic
