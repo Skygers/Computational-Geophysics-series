@@ -1,1 +1,3 @@
-# Geology-Analyst-Seismic-non-Sesimic
+# Computational Geophysics Series
+---
+## Under Development
