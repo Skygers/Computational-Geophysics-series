@@ -27,7 +27,7 @@ df = pd.read_csv("Reservoir Engineering Series\Rock and Fluid Properties\data\Ta
 sigma = 72 #dynes/cm (need to convert to psi/cm)
 theta = 45 #deg (in calculation this value convert in radian)
 poro = [0.08, 0.11, 0.15, 0.22] #porosity every cores, shows in table
-k = [1, 15, 100, 500] #md (need to convert to cm)
+k = [1.0, 15.0, 100.0, 500.0] #md (need to convert to cm)
 k_convert = []
 
 #converting sigma
