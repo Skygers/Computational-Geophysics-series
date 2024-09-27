@@ -1,7 +1,6 @@
 import inspect
 import sys
-sys.path.append("Reservoir Engineering Series")
-
+sys.path.append("Reservoir Engineering Series\Rock and Fluid Properties")
 from utilities import calc_Fahrenheit_to_Rankine, calc_psig_to_psia
 
 class Sutton:
@@ -217,6 +216,15 @@ class Sutton:
                 self._check_conflicting_arguments(self.calc_Ppc_corrected, 'Ppc_corrected')
             self.Ppc_corrected = Ppc_corrected
 
+    def _initialize_Tr_and_Pr(self, sg=None, P=None, T=None, Tpc=None, Ppc=None, Tpc_corrected=None, Ppc_corrected=None,
+               H2S=None, CO2=None, Tr=None, Pr=None, e_correction=None, ignore_conflict=False):
+        self._set_first_caller_attributes(inspect.stack()[0][3], locals())
+        self._initialize_Tr(Tr, T, Tpc_corrected=Tpc_corrected, sg=sg, Tpc=Tpc, e_correction=e_correction, H2S=H2S,
+                            CO2=CO2, ignore_conflict=ignore_conflict)
+        self._initialize_Pr(Pr, P=P, Ppc_corrected=Ppc_corrected, sg=sg, Tpc=Tpc, Ppc=Ppc, e_correction=e_correction,
+                            Tpc_corrected=Tpc_corrected, H2S=H2S, CO2=CO2, ignore_conflict=ignore_conflict)
+        return self.Tr, self.Pr
+    
     def _set_first_caller_attributes(self, func_name, func_kwargs):
         if not self._first_caller_is_saved:
             func_kwargs = {key: value for key, value in func_kwargs.items() if key != 'self'}
